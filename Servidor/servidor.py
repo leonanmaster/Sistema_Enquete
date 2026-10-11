@@ -16,6 +16,9 @@ class EnqueteAPI:
     def listar_enquetes_ativas(self):
         return bd.obter_enquetes_ativas()
 
+    def listar_opcoes_enquete(self, id_enquete):
+        return bd.obter_opcoes(id_enquete)
+
 def iniciar_servidor(ip="0.0.0.0", porta=8000):
     # Garante que o banco de dados e as tabelas são criados antes de abrir a rede
     bd.inicializar_banco()

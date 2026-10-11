@@ -37,10 +37,18 @@ def main():
                 print(f"Resposta do servidor: {resposta}")
                 
             elif opcao == '2':
+                ativas = servidor.listar_enquetes_ativas()
+                print("Enquetes Ativas:")
+                for e in ativas:
+                    print(f"ID: {e[0]} | Pergunta: {e[1]} | Limite: {e[2]}")
+
                 id_enquete = int(input("ID da Enquete: "))
+                
+                opcoes = servidor.listar_opcoes_enquete(id_enquete)
+                for e in opcoes:
+                    print(f"ID: {e[0]} | Opção: {e[1]}")
                 id_opcao = int(input("ID da Opção escolhida: "))
                 
-
                 resposta = servidor.votar(usuario, id_enquete, id_opcao)
                 print(f"Resposta do servidor: {resposta}")
                 

@@ -137,3 +137,18 @@ def obter_enquetes_ativas():
     enquetes = cursor.fetchall()
     conexao.close()
     return enquetes
+
+def obter_opcoes(id_enquete):
+    conexao = sqlite3.connect(NOME_BANCO)
+    cursor = conexao.cursor()
+
+    cursor.execute('''
+            SELECT id, texto
+            FROM opcoes 
+            WHERE id_enquete = ?
+        ''', (id_enquete,))
+
+    opcoes = cursor.fetchall()
+    conexao.close()
+    return opcoes
+    
